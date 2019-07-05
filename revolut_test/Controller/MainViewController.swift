@@ -10,6 +10,8 @@ import UIKit
 import Foundation
 class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,Add_new_currency_clicked {
     
+    var is_editing = false
+    
     var pairs : [Currencypair]? = []{
         didSet{
             sync_view()
@@ -77,6 +79,47 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
     }
     
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        is_editing = true
+        print("start editing")
+    }
+    
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        is_editing = false
+        print("end editing")
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.row > 0{
+            return true
+        }else{
+            return false
+        }
+    }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        print("swipe detected")
+        if indexPath.row > 0 {
+            let delete = deleteAction(at: indexPath)
+            return UISwipeActionsConfiguration(actions: [delete])
+        }else{
+            return nil
+        }
+    }
+    
+    func deleteAction(at indexPath: IndexPath)-> UIContextualAction{
+        print("delete detected")
+        let action = UIContextualAction(style: .normal, title: "Delete") { (action, view, completion) in
+            if indexPath.row>0{
+                self.pairs?.remove(at: (indexPath.row-1))
+                self.tableView.reloadData()
+                completion(true)
+            }
+        }
+        action.backgroundColor = .red
+        
+        return action
+    }
+    
     func get_rate_string_parts(value : Double)->[String]{
         var str_array = [String]()
         
@@ -89,11 +132,16 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 break
             }
         }
-        let index = str.index(str.startIndex, offsetBy: posOfPoint + 3)
-        str_array.append(str.substring(to: index))
-        
-        str_array.append(str.substring(with: index..<str.endIndex))
-        
+//        print("pos of point is : \(posOfPoint) lengh is :\(str.count)")
+        if(str.count-posOfPoint>3){
+            let index = str.index(str.startIndex, offsetBy: posOfPoint + 3)
+            str_array.append(str.substring(to: index))
+            
+            str_array.append(str.substring(with: index..<str.endIndex))
+        }else{
+            str_array.append(str)
+            str_array.append("")
+        }
         return str_array
     }
     
@@ -116,16 +164,19 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func sync_view(){
         if let pairs = pairs {
             if pairs.count>0{
-                tableView.reloadData()
-                start_service()
+                if !is_editing {
+                    tableView.reloadData()
+                }
+                
                 return
             }else{
-                stopservice()
                 show_popUp()
             }
         }else{
             show_popUp()
         }
+        
+        start_service()
     }
     
     func show_popUp(){
@@ -141,7 +192,7 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func start_service(){
         if serviceTimer == nil{
-            serviceTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(get_data), userInfo: nil, repeats: true)
+            serviceTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(get_data), userInfo: nil, repeats: true)
         }
     }
     
@@ -154,22 +205,26 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     @objc func get_data (){
         if let the_pairs = self.pairs{
-            let service = Service.instance
-            service.get_data(pairs: the_pairs,completion: {result,error,the_pairs in
-                if result == Req_result.success{
-                    
-                    if self.pairs?.count == the_pairs.count{
-                        DispatchQueue.main.async {
-                            self.pairs = the_pairs
-                            self.tableView.reloadData()
+            if the_pairs.count>0{
+                let service = Service.instance
+                service.get_data(pairs: the_pairs,completion: {result,error,the_pairs in
+                    if result == Req_result.success{
+                        if self.pairs?.count == the_pairs.count{
+                            DispatchQueue.main.async {
+                                self.pairs = the_pairs
+                                if !self.is_editing {
+                                    self.tableView.reloadData()
+                                }
+                            }
                         }
+                        
                     }
-                    
-                }
-                //                else if result == Req_result.failure {
-                //                print("error: \(error)")
-                //                }
-            })
+                    //                else if result == Req_result.failure {
+                    //                print("error: \(error)")
+                    //                }
+                })
+            }
+            
         }
     }
     
