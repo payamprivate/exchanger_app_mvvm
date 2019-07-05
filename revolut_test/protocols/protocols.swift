@@ -11,3 +11,7 @@ import Foundation
 protocol Add_new_currency_clicked {
     func add_new_currency_clicked()
 }
+
+protocol Get_new_pairs {
+    func get_new_pairs(pairs : [Currencypair])
+}

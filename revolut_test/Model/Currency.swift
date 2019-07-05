@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Currency {
+class Currency : Codable {
     var id = -1
     var nick_name = "GBP"
     var full_name = "British Pound"

@@ -8,13 +8,43 @@
 
 import UIKit
 import Foundation
-class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,Add_new_currency_clicked {
+class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,Add_new_currency_clicked,Get_new_pairs {
+    
+    
+    let saved_name = "pairs"
+    var is_showing_popup = false
+    let userDefaults = UserDefaults.standard
+    
+    
+    func get_new_pairs(pairs: [Currencypair]) {
+        self.pairs = pairs
+    }
+    
     
     var is_editing = false
     
     var pairs : [Currencypair]? = []{
         didSet{
             sync_view()
+            
+            guard let pairs = pairs else {return}
+            if let encoded = try? JSONEncoder().encode(pairs) {
+                UserDefaults.standard.set(encoded, forKey: saved_name)
+            }else{
+                print("there was error")
+            }
+            
+//            if let pairs = pairs , oldValue?.count != pairs.count {
+//                print("new counts are dif")
+//
+////                for index in pairs.indices {
+//                UIView.animate(withDuration: 0.8){
+//                    let indexPath = IndexPath(row: 0, section: 0)
+//                    self.tableView.insertRows(at: [indexPath], with: .right)
+//                }
+//            }else{
+//                sync_view()
+//            }
         }
     }
     
@@ -24,7 +54,7 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     override func viewWillAppear(_ animated: Bool) {
         print("view Appeared")
-        sync_view()
+        is_showing_popup = false
     }
     
     deinit {
@@ -34,7 +64,7 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.add_new_currency(_:)) ,name: NSNotification.Name(rawValue: "add_currency"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.add_new_currency(_:)) ,name: NSNotification.Name(rawValue: "add_currency"), object: nil)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -44,6 +74,11 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         navigationController?.navigationBar.layoutIfNeeded()
         navigationController?.navigationBar.isHidden = true
+        
+        if let blogData = UserDefaults.standard.data(forKey: saved_name),
+            let saved_pairs = try? JSONDecoder().decode([Currencypair].self, from: blogData) {
+            pairs = saved_pairs
+        }
         
     }
     
@@ -81,12 +116,10 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
         is_editing = true
-        print("start editing")
     }
     
     func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
         is_editing = false
-        print("end editing")
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -97,8 +130,6 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        print("swipe detected")
-        
             let delete = deleteAction(at: indexPath)
             return UISwipeActionsConfiguration(actions: [delete])
         
@@ -130,7 +161,6 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 break
             }
         }
-//        print("pos of point is : \(posOfPoint) lengh is :\(str.count)")
         if(str.count-posOfPoint>3){
             let index = str.index(str.startIndex, offsetBy: posOfPoint + 3)
             str_array.append(str.substring(to: index))
@@ -160,12 +190,12 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     func sync_view(){
+        start_service()
         if let pairs = pairs {
             if pairs.count>0{
                 if !is_editing {
                     tableView.reloadData()
                 }
-                
                 return
             }else{
                 show_popUp()
@@ -173,17 +203,16 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }else{
             show_popUp()
         }
-        
-        start_service()
     }
     
     func show_popUp(){
-        if let pop_over = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "popup_add") as? Popup_add_Controller{
+        if !is_showing_popup, let pop_over = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "popup_add") as? Popup_add_Controller{
             self.addChild(pop_over)
             pop_over.view.frame = self.view.frame
             self.view.addSubview(pop_over.view)
             pop_over.didMove(toParent: self)
             pop_over.delegate = self
+            is_showing_popup = true
         }
     }
     
@@ -234,7 +263,7 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             if let pairs = pairs {
                 add_currency_page.all_currency_pairs = pairs
             }
-            add_currency_page.mainController = self
+            add_currency_page.delegate = self
         }
     }
 }

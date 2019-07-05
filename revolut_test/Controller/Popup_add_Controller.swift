@@ -12,6 +12,8 @@ class Popup_add_Controller: UIViewController {
 
     var delegate : Add_new_currency_clicked?
     
+    
+    
     @IBAction func add_clicked(_ sender: Any) {
         if let delegate = delegate {
             delegate.add_new_currency_clicked()

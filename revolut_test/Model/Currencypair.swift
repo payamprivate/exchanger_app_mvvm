@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Currencypair {
+class Currencypair : Codable {
     var firstCurrency : Currency
     var secondCurrency : Currency
     var rate : Double?
@@ -19,12 +19,16 @@ class Currencypair {
         self.rate = rate
     }
     
-    func get_pair_name()->String{
-//        if (firstCurrency != nil && secondCurrency != nil){
-        return "\(firstCurrency.nick_name)\(secondCurrency.nick_name)"
-//        }else{
-//            return ""
-//        }
-    }
     
+    
+}
+
+extension Currencypair {
+    func get_pair_name()->String{
+        //        if (firstCurrency != nil && secondCurrency != nil){
+        return "\(firstCurrency.nick_name)\(secondCurrency.nick_name)"
+        //        }else{
+        //            return ""
+        //        }
+    }
 }

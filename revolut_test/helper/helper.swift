@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
+extension UIImageView {
+    func makeRounded() {
+        let radius = self.frame.width/2.0
+        self.layer.cornerRadius = radius
+        self.layer.masksToBounds = true
+    }
+}
+
 func get_currency_list()->[Currency]{
     var currency_list = [Currency]()
     
@@ -112,10 +120,4 @@ func get_currency_list()->[Currency]{
 }
 
 
-extension UIImageView {
-    func makeRounded() {
-        let radius = self.frame.width/2.0
-        self.layer.cornerRadius = radius
-        self.layer.masksToBounds = true
-    }
-}
+
