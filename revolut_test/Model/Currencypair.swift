@@ -9,8 +9,8 @@
 import Foundation
 
 class Currencypair {
-    var firstCurrency : Currency!
-    var secondCurrency : Currency!
+    var firstCurrency : Currency
+    var secondCurrency : Currency
     var rate : Double?
     
     init(firstCurrency : Currency ,secondCurrency : Currency , rate : Double?) {

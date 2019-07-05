@@ -98,12 +98,10 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         print("swipe detected")
-        if indexPath.row > 0 {
+        
             let delete = deleteAction(at: indexPath)
             return UISwipeActionsConfiguration(actions: [delete])
-        }else{
-            return nil
-        }
+        
     }
     
     func deleteAction(at indexPath: IndexPath)-> UIContextualAction{
