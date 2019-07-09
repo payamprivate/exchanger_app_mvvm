@@ -27,7 +27,7 @@ extension UIImageView {
     }
 }
 
-//returning currencies
+//returning all currencies
 func get_currency_list()->[Currency]{
     var currency_list = [Currency]()
     

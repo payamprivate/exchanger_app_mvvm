@@ -138,36 +138,30 @@ class Main_view_model {
     
     //getting data from server for our pairs and updating the rates
     @objc func get_data (){
-        if let the_pairs = self.pairs_viewModel{
-            if the_pairs.count>0{
-                let service = Service.instance
-                service.get_data(pairs: the_pairs,completion: {result,error,the_pairs in
-                    if result == Req_result.success{
-                        if self.pairs?.count == the_pairs.count{
-                            DispatchQueue.main.async {
-                                self.pairs_viewModel = the_pairs
-                                if !self.is_editing {
-                                    self.delegate?.update_tableview()
-                                }
-                            }
-                        }
-                        
-                    }
-                })
-            }
-            
+        guard let the_pairs = self.pairs_viewModel, the_pairs.count>0 else{
+            return
         }
+        let service = Service.instance
+        service.get_data(pairs: the_pairs,completion: {result,error,the_pairs in
+            if result == Req_result.success{
+                if self.pairs?.count == the_pairs.count{
+                    DispatchQueue.main.async {
+                        self.pairs_viewModel = the_pairs
+                        if !self.is_editing {
+                            self.delegate?.update_tableview()
+                        }
+                    }
+                }
+            }
+        })
     }
     
     // checking the pairs if there was only 0 pairs or nil ,we want to show popup( Add new Currency Page )
     func sync_view(){
         start_service()
-        if let pairs = pairs {
-            if pairs.count==0{
-                self.delegate?.show_popUp()
-            }
-        }else{
+        guard let pairs = pairs , pairs.count>0 else {
             self.delegate?.show_popUp()
+            return
         }
     }
 }
