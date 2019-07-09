@@ -10,14 +10,17 @@ import XCTest
 
 class revolut_testUITests: XCTestCase {
 
+    let app = XCUIApplication()
+    
     override func setUp() {
+
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
 
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
+        app.launch()
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
@@ -29,6 +32,33 @@ class revolut_testUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        if ( XCUIApplication().staticTexts["Choose a currency pair to compare their live rates"].exists ){
+            let app = XCUIApplication()
+            app.buttons["Add currency pair"].tap()
+            
+            let tablesQuery = app.tables
+            tablesQuery.cells.containing(.image, identifier:"CHF").children(matching: .button).element.tap()
+            tablesQuery.cells.containing(.image, identifier:"GBP").children(matching: .button).element.tap()
+            
+            let tablesQuery2 = tablesQuery
+            XCTAssertTrue(tablesQuery2.staticTexts["Swiss Franc"].exists)
+            XCTAssertTrue(tablesQuery2.staticTexts["1 CHF"].exists)
+            XCTAssertTrue(tablesQuery2.staticTexts["British Pound . GBP"].exists)
+
+        }else{
+            
+            let tablesQuery = XCUIApplication().tables
+            tablesQuery.cells.containing(.image, identifier:"pluse").children(matching: .button).element.tap()
+            tablesQuery.cells.containing(.image, identifier:"CHF").children(matching: .button).element.tap()
+            tablesQuery.cells.containing(.image, identifier:"EUR").children(matching: .button).element.tap()
+            
+            XCTAssertTrue(tablesQuery.cells.containing(.staticText, identifier:"Euro . EUR").staticTexts["1 CHF"].exists)
+            XCTAssertTrue(tablesQuery.cells.containing(.staticText, identifier:"Euro . EUR").staticTexts["Swiss Franc"].exists)
+            XCTAssertTrue(tablesQuery.staticTexts["Euro . EUR"].exists)
+            
+        }
+        
     }
 
 }

@@ -9,21 +9,10 @@
 import UIKit
 
 class Main_New_Currency_Cell: UITableViewCell {
-
+    
     @IBAction func btn_add_new(_ sender: Any) {
         let notif = Notification(name: Notification.Name(rawValue: "add_currency"), object: nil )
         NotificationCenter.default.post(notif)
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

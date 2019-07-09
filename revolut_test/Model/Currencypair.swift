@@ -11,24 +11,9 @@ import Foundation
 class Currencypair : Codable {
     var firstCurrency : Currency
     var secondCurrency : Currency
-    var rate : Double?
     
-    init(firstCurrency : Currency ,secondCurrency : Currency , rate : Double?) {
+    init(firstCurrency : Currency ,secondCurrency : Currency ) {
         self.firstCurrency = firstCurrency
         self.secondCurrency = secondCurrency
-        self.rate = rate
-    }
-    
-    
-    
-}
-
-extension Currencypair {
-    func get_pair_name()->String{
-        //        if (firstCurrency != nil && secondCurrency != nil){
-        return "\(firstCurrency.nick_name)\(secondCurrency.nick_name)"
-        //        }else{
-        //            return ""
-        //        }
     }
 }

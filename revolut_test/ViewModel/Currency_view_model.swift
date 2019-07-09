@@ -7,3 +7,29 @@
 //
 
 import Foundation
+import UIKit
+class Currency_view_model {
+    var currency : Currency
+    
+    lazy var name : String = {
+        return currency.full_name
+    }()
+    
+    lazy var nickname_uppedcased : String = {
+        return currency.nick_name.uppercased()
+    }()
+    
+    lazy var nickname : String = {
+        return currency.nick_name
+    }()
+    
+    lazy var flag : UIImage = {
+        return UIImage(named: "\(currency.nick_name)")!
+    }()
+    
+    
+    init(currency : Currency) {
+        self.currency = currency
+    }
+    
+}

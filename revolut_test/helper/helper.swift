@@ -9,6 +9,16 @@
 import Foundation
 import UIKit
 
+class Helper {
+    
+}
+
+enum Rate_section {
+    case big
+    case little
+}
+
+// making images round for flags!
 extension UIImageView {
     func makeRounded() {
         let radius = self.frame.width/2.0
@@ -17,6 +27,7 @@ extension UIImageView {
     }
 }
 
+//returning currencies
 func get_currency_list()->[Currency]{
     var currency_list = [Currency]()
     

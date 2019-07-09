@@ -15,7 +15,7 @@ class Service {
     
     static let instance = Service()
     
-    func get_data(pairs : [Currencypair],completion: @escaping SuccessHandler ){
+    func get_data(pairs : [Currency_pair_view_model],completion: @escaping SuccessHandler ){
         if !is_loading {
             is_loading = true
             
@@ -37,12 +37,10 @@ class Service {
                         do {
                             if let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:AnyObject]{
                                 for (index,pair) in new_pairs.enumerated() {
-//                                    print("pairname: \(pair.get_pair_name())")
-                                    if let the_rate = jsonData["\(pair.get_pair_name())"] as? Double {
+                                    if let the_rate = jsonData["\(pair.pair_name)"] as? Double {
                                         var new_pair = new_pairs[index]
                                         new_pair.rate =   Double(round(10000*the_rate)/10000)
                                         new_pairs[index] = new_pair
-//                                        print("new rate is of index\(index) is \(new_pairs[index].rate)")
                                     }
                                 }
                                 self.is_loading = false
@@ -59,25 +57,21 @@ class Service {
                     }.resume()
             }
         }else{
-//            print("error loading !")
-            is_loading = false
             completion(Req_result.failure, "is_loading", pairs)
         }
     }
     
-    func create_url(pairs : [Currencypair]) -> String {
+    //creating url from pairs
+    func create_url(pairs : [Currency_pair_view_model]) -> String {
         var url_string = url
         for (index,pair) in pairs.enumerated() {
             if index > 0 {
                 url_string.append("&")
             }
-            url_string.append("pairs=\(pair.get_pair_name())")
+            url_string.append("pairs=\(pair.pair_name)")
         }
         return url_string
     }
 }
 
-enum Result<Value, Error> {
-    case success(Value)
-    case failure(Error)
-}
+

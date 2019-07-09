@@ -10,35 +10,29 @@ import UIKit
 
 class Add_Currency_ViewController: UITableViewController {
     
-    var delegate : Get_new_pairs?
+    var delegate : Set_new_pairs?
     
-    lazy var exclude_Currencies : [Currency] = {
-        return exclude_currencies()
-    }()
+    var viewModel : AddCurrency_ctrl_viewModel?
     
-    var all_currency_pairs : [Currencypair] = [Currencypair]()
-    
-    let currencies = get_currency_list()
-    var firstCurrency : Currency?
-    var secondCurrency : Currency?
-    
-    
-    
-    
+    var added_currency_pairs : [Currency_pair_view_model] = [Currency_pair_view_model]()
     
     @objc func currency_choosed(_ notif : Notification){
+        guard let viewModel = viewModel else {
+            print("guard exception")
+            return
+        }
         if let position = notif.object as? Int{
-            if firstCurrency == nil {
-                self.firstCurrency = currencies[position]
+            if viewModel.firstCurrency == nil {
+                viewModel.firstCurrency = viewModel.currencies_viewModel[position].currency
                 tableView.reloadData()
             }else{
-                self.secondCurrency = currencies[position]
-                let newpair = Currencypair(firstCurrency: firstCurrency!, secondCurrency: secondCurrency!, rate: nil)
-                all_currency_pairs.insert(newpair, at: 0)
+                viewModel.secondCurrency = viewModel.currencies_viewModel[position].currency
+                let newpair = Currencypair(firstCurrency: viewModel.firstCurrency!, secondCurrency: viewModel.secondCurrency!)
+                let newpairViewModel = Currency_pair_view_model(pair: newpair)
+                viewModel.added_currency_pairs.insert(newpairViewModel, at: 0)
                 if let delegate = delegate {
-                    delegate.get_new_pairs(pairs: all_currency_pairs)
+                    delegate.set_new_pairs(pairs: viewModel.added_currency_pairs)
                 }
-//                print("pairs choosed")
                 self.navigationController?.popToRootViewController(animated: true)
             }
         }
@@ -46,66 +40,25 @@ class Add_Currency_ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.currency_choosed(_:)) ,name: NSNotification.Name(rawValue: "currency_choosed"), object: nil)
-
+        
+        viewModel = AddCurrency_ctrl_viewModel(added_currency_pairs: added_currency_pairs)
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return currencies.count
+        return viewModel?.number_of_rows() ?? 0
     }
-
-
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "currency_cell", for: indexPath) as! Add_Currency_Cell
-        let currency = currencies[indexPath.row]
-        cell.label_fullname.text = currency.full_name
-        cell.label_nickname.text = currency.nick_name.uppercased()
-        cell.image_flag.image = UIImage(named: "\(currency.nick_name)")
-        cell.position = indexPath.row
-        // if currency exists in exclude_Currencies we should disable it
-        cell.view_disable.isHidden = true
-        if let firscurrency = firstCurrency {
-            if is_cell_disabled(currency: currency){
-                cell.view_disable.isHidden = false
-            }
-        }
-        
-        // Configure the cell...
+        let currency = viewModel!.currencies_viewModel[indexPath.row]
+        cell.configurCell(viewModel: currency, position: indexPath.row, is_hiden_view_disabled: viewModel!.is_hiden_viewDisabled(currency_vm : currency) )
         return cell
     }
     
-    func is_cell_disabled(currency : Currency)->Bool{
-        for the_currency in exclude_Currencies {
-            if the_currency.nick_name == currency.nick_name {
-                return true
-            }
-        }
-        return false
-    }
-    
-    func exclude_currencies() -> [Currency] {
-        var excludes = [Currency]()
-        if let firstCurrency = firstCurrency {
-            excludes.append(firstCurrency)
-            
-            for currency in all_currency_pairs {
-                if currency.firstCurrency.nick_name == firstCurrency.nick_name {
-                    excludes.append(currency.secondCurrency)
-                }
-            }
-        }
-        return excludes
-    }
-
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if let firscurrency = firstCurrency {
-            return "Second Currency"
-        }else{
-            return "First Currency"
-        }
+        return viewModel?.title_for_header()
     }
-
-
 }

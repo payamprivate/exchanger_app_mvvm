@@ -22,6 +22,49 @@
 		EEA6249B22CD4D37006AE1B3 /* Main_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6249A22CD4D37006AE1B3 /* Main_Cell.swift */; };
 		EEA6249D22CD4D58006AE1B3 /* Add_Currency_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6249C22CD4D58006AE1B3 /* Add_Currency_Cell.swift */; };
 		EEA6249F22CD4D89006AE1B3 /* Main_New_Currency_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6249E22CD4D89006AE1B3 /* Main_New_Currency_Cell.swift */; };
+		EEB5DA9222D332B20047FBA0 /* AddCurrency_ctrl_viewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB5DA9122D332B20047FBA0 /* AddCurrency_ctrl_viewModel.swift */; };
+		EEB5DA9422D334EF0047FBA0 /* Currency_pair_view_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB5DA9322D334EF0047FBA0 /* Currency_pair_view_model.swift */; };
+		EEB5DA9622D335000047FBA0 /* Currency_view_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB5DA9522D335000047FBA0 /* Currency_view_model.swift */; };
+		EEB5DA9722D4873A0047FBA0 /* Main_view_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB7FC2122D102AD005C873E /* Main_view_model.swift */; };
+		EEB5DA9822D4873D0047FBA0 /* protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1AAC222CE2816005756D4 /* protocols.swift */; };
+		EEB5DA9922D4873F0047FBA0 /* helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6249622CD4512006AE1B3 /* helper.swift */; };
+		EEB5DA9A22D487430047FBA0 /* AddCurrency_ctrl_viewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB5DA9122D332B20047FBA0 /* AddCurrency_ctrl_viewModel.swift */; };
+		EEB5DA9B22D487450047FBA0 /* Currency_pair_view_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB5DA9322D334EF0047FBA0 /* Currency_pair_view_model.swift */; };
+		EEB5DA9C22D487480047FBA0 /* Currency_view_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB5DA9522D335000047FBA0 /* Currency_view_model.swift */; };
+		EEB5DA9D22D4874B0047FBA0 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CD5D722CBAC98005B9D84 /* Currency.swift */; };
+		EEB5DA9E22D4874D0047FBA0 /* Currencypair.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CD5D922CBAEE4005B9D84 /* Currencypair.swift */; };
+		EEB5DA9F22D487590047FBA0 /* Main_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6249A22CD4D37006AE1B3 /* Main_Cell.swift */; };
+		EEB5DAA022D4875B0047FBA0 /* Main_New_Currency_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6249E22CD4D89006AE1B3 /* Main_New_Currency_Cell.swift */; };
+		EEB5DAA122D4875D0047FBA0 /* Add_Currency_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6249C22CD4D58006AE1B3 /* Add_Currency_Cell.swift */; };
+		EEB5DAA222D4875F0047FBA0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CD5AA22CBAC00005B9D84 /* MainViewController.swift */; };
+		EEB5DAA322D487610047FBA0 /* Popup_add_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1AAC422CE28BF005756D4 /* Popup_add_Controller.swift */; };
+		EEB5DAA422D487640047FBA0 /* Add_Currency_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6249822CD4CDC006AE1B3 /* Add_Currency_ViewController.swift */; };
+		EEB5DAA522D487670047FBA0 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CD5DF22CBB01B005B9D84 /* Service.swift */; };
+		EEB5DAA622D487690047FBA0 /* Service_entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1AAC622CE83CE005756D4 /* Service_entities.swift */; };
+		EEB5DAA822D4CAE90047FBA0 /* revolut_testTests_Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB5DAA722D4CAE90047FBA0 /* revolut_testTests_Entities.swift */; };
+		EEB5DAA922D4E7760047FBA0 /* protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1AAC222CE2816005756D4 /* protocols.swift */; };
+		EEB5DAAA22D4E7780047FBA0 /* helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6249622CD4512006AE1B3 /* helper.swift */; };
+		EEB5DAAB22D4E77E0047FBA0 /* AddCurrency_ctrl_viewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB5DA9122D332B20047FBA0 /* AddCurrency_ctrl_viewModel.swift */; };
+		EEB5DAAC22D4E7820047FBA0 /* Main_view_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB7FC2122D102AD005C873E /* Main_view_model.swift */; };
+		EEB5DAAD22D4E7850047FBA0 /* Currency_pair_view_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB5DA9322D334EF0047FBA0 /* Currency_pair_view_model.swift */; };
+		EEB5DAAE22D4E78A0047FBA0 /* Currency_view_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB5DA9522D335000047FBA0 /* Currency_view_model.swift */; };
+		EEB5DAAF22D4E78C0047FBA0 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CD5D722CBAC98005B9D84 /* Currency.swift */; };
+		EEB5DAB022D4E78E0047FBA0 /* Currencypair.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CD5D922CBAEE4005B9D84 /* Currencypair.swift */; };
+		EEB5DAB122D4E7910047FBA0 /* Main_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6249A22CD4D37006AE1B3 /* Main_Cell.swift */; };
+		EEB5DAB222D4E7930047FBA0 /* Main_New_Currency_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6249E22CD4D89006AE1B3 /* Main_New_Currency_Cell.swift */; };
+		EEB5DAB322D4E7950047FBA0 /* Add_Currency_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6249C22CD4D58006AE1B3 /* Add_Currency_Cell.swift */; };
+		EEB5DAB422D4E7980047FBA0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CD5AA22CBAC00005B9D84 /* MainViewController.swift */; };
+		EEB5DAB522D4E79A0047FBA0 /* Popup_add_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1AAC422CE28BF005756D4 /* Popup_add_Controller.swift */; };
+		EEB5DAB622D4E79C0047FBA0 /* Add_Currency_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6249822CD4CDC006AE1B3 /* Add_Currency_ViewController.swift */; };
+		EEB5DAB722D4E79F0047FBA0 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CD5DF22CBB01B005B9D84 /* Service.swift */; };
+		EEB5DAB822D4E7A10047FBA0 /* Service_entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1AAC622CE83CE005756D4 /* Service_entities.swift */; };
+		EEB5DAB922D4E7A50047FBA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CD5A822CBAC00005B9D84 /* AppDelegate.swift */; };
+		EEB5DABA22D4E7A50047FBA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CD5A822CBAC00005B9D84 /* AppDelegate.swift */; };
+		EEB5DABB22D4E7AB0047FBA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE7CD5AC22CBAC00005B9D84 /* Main.storyboard */; };
+		EEB5DABC22D4E7AC0047FBA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE7CD5AC22CBAC00005B9D84 /* Main.storyboard */; };
+		EEB5DABD22D4E7B10047FBA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE7CD5AF22CBAC01005B9D84 /* Assets.xcassets */; };
+		EEB5DABE22D4E7B10047FBA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE7CD5AF22CBAC01005B9D84 /* Assets.xcassets */; };
+		EEB7FC2222D102AD005C873E /* Main_view_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB7FC2122D102AD005C873E /* Main_view_model.swift */; };
 		EED1AAC322CE2816005756D4 /* protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1AAC222CE2816005756D4 /* protocols.swift */; };
 		EED1AAC522CE28BF005756D4 /* Popup_add_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1AAC422CE28BF005756D4 /* Popup_add_Controller.swift */; };
 		EED1AAC722CE83CE005756D4 /* Service_entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1AAC622CE83CE005756D4 /* Service_entities.swift */; };
@@ -66,6 +109,11 @@
 		EEA6249A22CD4D37006AE1B3 /* Main_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_Cell.swift; sourceTree = "<group>"; };
 		EEA6249C22CD4D58006AE1B3 /* Add_Currency_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Add_Currency_Cell.swift; sourceTree = "<group>"; };
 		EEA6249E22CD4D89006AE1B3 /* Main_New_Currency_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_New_Currency_Cell.swift; sourceTree = "<group>"; };
+		EEB5DA9122D332B20047FBA0 /* AddCurrency_ctrl_viewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCurrency_ctrl_viewModel.swift; sourceTree = "<group>"; };
+		EEB5DA9322D334EF0047FBA0 /* Currency_pair_view_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency_pair_view_model.swift; sourceTree = "<group>"; };
+		EEB5DA9522D335000047FBA0 /* Currency_view_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency_view_model.swift; sourceTree = "<group>"; };
+		EEB5DAA722D4CAE90047FBA0 /* revolut_testTests_Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = revolut_testTests_Entities.swift; sourceTree = "<group>"; };
+		EEB7FC2122D102AD005C873E /* Main_view_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_view_model.swift; sourceTree = "<group>"; };
 		EED1AAC222CE2816005756D4 /* protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocols.swift; sourceTree = "<group>"; };
 		EED1AAC422CE28BF005756D4 /* Popup_add_Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup_add_Controller.swift; sourceTree = "<group>"; };
 		EED1AAC622CE83CE005756D4 /* Service_entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service_entities.swift; sourceTree = "<group>"; };
@@ -126,11 +174,9 @@
 				EE7CD5DC22CBAF8C005B9D84 /* View */,
 				EE7CD5DD22CBAFA2005B9D84 /* Controller */,
 				EE7CD5DE22CBAFB0005B9D84 /* Service */,
-				EE7CD5A822CBAC00005B9D84 /* AppDelegate.swift */,
-				EE7CD5AC22CBAC00005B9D84 /* Main.storyboard */,
-				EE7CD5AF22CBAC01005B9D84 /* Assets.xcassets */,
-				EE7CD5B122CBAC01005B9D84 /* LaunchScreen.storyboard */,
+				EEB5DABF22D52A900047FBA0 /* resources */,
 				EE7CD5B422CBAC01005B9D84 /* Info.plist */,
+				EE7CD5A822CBAC00005B9D84 /* AppDelegate.swift */,
 			);
 			path = revolut_test;
 			sourceTree = "<group>";
@@ -139,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				EE7CD5BD22CBAC02005B9D84 /* revolut_testTests.swift */,
+				EEB5DAA722D4CAE90047FBA0 /* revolut_testTests_Entities.swift */,
 				EE7CD5BF22CBAC02005B9D84 /* Info.plist */,
 			);
 			path = revolut_testTests;
@@ -165,6 +212,10 @@
 		EE7CD5DB22CBAF6F005B9D84 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				EEB7FC2122D102AD005C873E /* Main_view_model.swift */,
+				EEB5DA9122D332B20047FBA0 /* AddCurrency_ctrl_viewModel.swift */,
+				EEB5DA9322D334EF0047FBA0 /* Currency_pair_view_model.swift */,
+				EEB5DA9522D335000047FBA0 /* Currency_view_model.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -172,9 +223,10 @@
 		EE7CD5DC22CBAF8C005B9D84 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EEA6249E22CD4D89006AE1B3 /* Main_New_Currency_Cell.swift */,
 				EEA6249A22CD4D37006AE1B3 /* Main_Cell.swift */,
+				EEA6249E22CD4D89006AE1B3 /* Main_New_Currency_Cell.swift */,
 				EEA6249C22CD4D58006AE1B3 /* Add_Currency_Cell.swift */,
+				EE7CD5AC22CBAC00005B9D84 /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,8 +234,8 @@
 		EE7CD5DD22CBAFA2005B9D84 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				EED1AAC422CE28BF005756D4 /* Popup_add_Controller.swift */,
 				EE7CD5AA22CBAC00005B9D84 /* MainViewController.swift */,
+				EED1AAC422CE28BF005756D4 /* Popup_add_Controller.swift */,
 				EEA6249822CD4CDC006AE1B3 /* Add_Currency_ViewController.swift */,
 			);
 			path = Controller;
@@ -204,6 +256,15 @@
 				EEA6249622CD4512006AE1B3 /* helper.swift */,
 			);
 			path = helper;
+			sourceTree = "<group>";
+		};
+		EEB5DABF22D52A900047FBA0 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				EE7CD5AF22CBAC01005B9D84 /* Assets.xcassets */,
+				EE7CD5B122CBAC01005B9D84 /* LaunchScreen.storyboard */,
+			);
+			path = resources;
 			sourceTree = "<group>";
 		};
 		EED1AAC122CE27A3005756D4 /* protocols */ = {
@@ -328,6 +389,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEB5DABD22D4E7B10047FBA0 /* Assets.xcassets in Resources */,
+				EEB5DABB22D4E7AB0047FBA0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +398,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEB5DABE22D4E7B10047FBA0 /* Assets.xcassets in Resources */,
+				EEB5DABC22D4E7AC0047FBA0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,12 +415,16 @@
 				EEA6249D22CD4D58006AE1B3 /* Add_Currency_Cell.swift in Sources */,
 				EED1AAC722CE83CE005756D4 /* Service_entities.swift in Sources */,
 				EE7CD5E022CBB01B005B9D84 /* Service.swift in Sources */,
+				EEB5DA9622D335000047FBA0 /* Currency_view_model.swift in Sources */,
+				EEB5DA9222D332B20047FBA0 /* AddCurrency_ctrl_viewModel.swift in Sources */,
 				EED1AAC522CE28BF005756D4 /* Popup_add_Controller.swift in Sources */,
 				EEA6249722CD4512006AE1B3 /* helper.swift in Sources */,
 				EE7CD5AB22CBAC00005B9D84 /* MainViewController.swift in Sources */,
+				EEB5DA9422D334EF0047FBA0 /* Currency_pair_view_model.swift in Sources */,
 				EED1AAC322CE2816005756D4 /* protocols.swift in Sources */,
 				EEA6249922CD4CDC006AE1B3 /* Add_Currency_ViewController.swift in Sources */,
 				EEA6249B22CD4D37006AE1B3 /* Main_Cell.swift in Sources */,
+				EEB7FC2222D102AD005C873E /* Main_view_model.swift in Sources */,
 				EEA6249F22CD4D89006AE1B3 /* Main_New_Currency_Cell.swift in Sources */,
 				EE7CD5A922CBAC00005B9D84 /* AppDelegate.swift in Sources */,
 			);
@@ -365,7 +434,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEB5DAA322D487610047FBA0 /* Popup_add_Controller.swift in Sources */,
+				EEB5DAA022D4875B0047FBA0 /* Main_New_Currency_Cell.swift in Sources */,
+				EEB5DAB922D4E7A50047FBA0 /* AppDelegate.swift in Sources */,
+				EEB5DAA222D4875F0047FBA0 /* MainViewController.swift in Sources */,
+				EEB5DA9E22D4874D0047FBA0 /* Currencypair.swift in Sources */,
+				EEB5DAA822D4CAE90047FBA0 /* revolut_testTests_Entities.swift in Sources */,
+				EEB5DA9A22D487430047FBA0 /* AddCurrency_ctrl_viewModel.swift in Sources */,
+				EEB5DA9B22D487450047FBA0 /* Currency_pair_view_model.swift in Sources */,
+				EEB5DA9822D4873D0047FBA0 /* protocols.swift in Sources */,
+				EEB5DA9C22D487480047FBA0 /* Currency_view_model.swift in Sources */,
+				EEB5DA9D22D4874B0047FBA0 /* Currency.swift in Sources */,
+				EEB5DAA622D487690047FBA0 /* Service_entities.swift in Sources */,
+				EEB5DAA522D487670047FBA0 /* Service.swift in Sources */,
+				EEB5DA9F22D487590047FBA0 /* Main_Cell.swift in Sources */,
+				EEB5DAA122D4875D0047FBA0 /* Add_Currency_Cell.swift in Sources */,
+				EEB5DAA422D487640047FBA0 /* Add_Currency_ViewController.swift in Sources */,
 				EE7CD5BE22CBAC02005B9D84 /* revolut_testTests.swift in Sources */,
+				EEB5DA9722D4873A0047FBA0 /* Main_view_model.swift in Sources */,
+				EEB5DA9922D4873F0047FBA0 /* helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +460,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEB5DAB522D4E79A0047FBA0 /* Popup_add_Controller.swift in Sources */,
+				EEB5DAB222D4E7930047FBA0 /* Main_New_Currency_Cell.swift in Sources */,
+				EEB5DAB422D4E7980047FBA0 /* MainViewController.swift in Sources */,
+				EEB5DAB022D4E78E0047FBA0 /* Currencypair.swift in Sources */,
+				EEB5DAAB22D4E77E0047FBA0 /* AddCurrency_ctrl_viewModel.swift in Sources */,
+				EEB5DAAD22D4E7850047FBA0 /* Currency_pair_view_model.swift in Sources */,
+				EEB5DAAA22D4E7780047FBA0 /* helper.swift in Sources */,
+				EEB5DAAE22D4E78A0047FBA0 /* Currency_view_model.swift in Sources */,
+				EEB5DAAF22D4E78C0047FBA0 /* Currency.swift in Sources */,
+				EEB5DAB822D4E7A10047FBA0 /* Service_entities.swift in Sources */,
+				EEB5DAB722D4E79F0047FBA0 /* Service.swift in Sources */,
+				EEB5DAB122D4E7910047FBA0 /* Main_Cell.swift in Sources */,
+				EEB5DABA22D4E7A50047FBA0 /* AppDelegate.swift in Sources */,
+				EEB5DAB322D4E7950047FBA0 /* Add_Currency_Cell.swift in Sources */,
+				EEB5DAB622D4E79C0047FBA0 /* Add_Currency_ViewController.swift in Sources */,
+				EEB5DAAC22D4E7820047FBA0 /* Main_view_model.swift in Sources */,
 				EE7CD5C922CBAC02005B9D84 /* revolut_testUITests.swift in Sources */,
+				EEB5DAA922D4E7760047FBA0 /* protocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

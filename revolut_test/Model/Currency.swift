@@ -10,8 +10,8 @@ import Foundation
 
 class Currency : Codable {
     var id = -1
-    var nick_name = "GBP"
-    var full_name = "British Pound"
+    var nick_name : String
+    var full_name : String
     
     init(id : Int,nick_name : String,full_name : String) {
         self.id = id

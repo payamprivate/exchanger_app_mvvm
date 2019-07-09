@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias SuccessHandler = (_ result: Req_result, _ error: String? , _ result : [Currencypair])
+typealias SuccessHandler = (_ result: Req_result, _ error: String? , _ result : [Currency_pair_view_model])
     -> Void
 
 enum Req_result {

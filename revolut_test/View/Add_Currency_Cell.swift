@@ -9,7 +9,7 @@
 import UIKit
 
 class Add_Currency_Cell: UITableViewCell {
-
+    
     var position : Int?
     var is_disable : Bool = false
     
@@ -30,11 +30,15 @@ class Add_Currency_Cell: UITableViewCell {
         // Initialization code
         image_flag.makeRounded()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func configurCell(viewModel : Currency_view_model,position : Int,is_hiden_view_disabled : Bool){
+        label_fullname.text = viewModel.name
+        label_nickname.text = viewModel.nickname_uppedcased
+        image_flag.image = viewModel.flag
+        self.position = position
+        
+        // if currency exists in exclude_Currencies we should disable it
+        view_disable.isHidden = is_hiden_view_disabled
     }
-
+    
 }
