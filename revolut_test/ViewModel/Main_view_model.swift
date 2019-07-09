@@ -46,16 +46,22 @@ class Main_view_model {
     init(delegate : Main_viewModel_to_ViewController_protocol) {
         self.delegate = delegate
         
-        if let blogData = UserDefaults.standard.data(forKey: saved_name),
-            let saved_pairs = try? JSONDecoder().decode([Currencypair].self, from: blogData) {
-            //because didset is not working without writing defer!
-            defer {
-                self.pairs = saved_pairs
-            }
-        }else{
+        if CommandLine.arguments.contains("enable-testing") {
+            //for testing purpose
             sync_view()
-            print("there is no saved data!")
+        }else{
+            if let blogData = UserDefaults.standard.data(forKey: saved_name),
+                let saved_pairs = try? JSONDecoder().decode([Currencypair].self, from: blogData) {
+                //because didset is not working without writing defer!
+                defer {
+                    self.pairs = saved_pairs
+                }
+            }else{
+                sync_view()
+                print("there is no saved data!")
+            }
         }
+        
     }
     
     // free initialization is for testing issues

@@ -18,7 +18,8 @@ class revolut_testUITests: XCTestCase {
 
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
+        
+        app.launchArguments = ["enable-testing"]
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         app.launch()
 
@@ -45,6 +46,20 @@ class revolut_testUITests: XCTestCase {
             XCTAssertTrue(tablesQuery2.staticTexts["Swiss Franc"].exists)
             XCTAssertTrue(tablesQuery2.staticTexts["1 CHF"].exists)
             XCTAssertTrue(tablesQuery2.staticTexts["British Pound . GBP"].exists)
+            
+            sleep(2)
+            
+            let tablesQuery3 = XCUIApplication().tables
+            tablesQuery3.cells.containing(.image, identifier:"pluse").children(matching: .button).element.tap()
+            tablesQuery3.cells.containing(.image, identifier:"GBP").children(matching: .button).element.tap()
+            tablesQuery3.cells.containing(.image, identifier:"EUR").children(matching: .button).element.tap()
+            
+            let tablesQuery4 = XCUIApplication().tables
+            XCTAssertTrue(tablesQuery4.staticTexts["1 GBP"].exists)
+            XCTAssertTrue(tablesQuery4.staticTexts["British Pound"].exists)
+            XCTAssertTrue(tablesQuery4.staticTexts["Euro . EUR"].exists)
+            
+            sleep(3)
 
         }else{
             
